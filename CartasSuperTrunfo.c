@@ -10,7 +10,7 @@ int main() {
 char estado1;
 char codigo1[4];
 char cidade1[20];
-int populacao1;
+unsigned long int populacao1; // Atualizado para unsigned long int conforme nível mestre
 float area1;
 float pib1;
 int nturisticos1;
@@ -18,7 +18,7 @@ int nturisticos1;
 char estado2;
 char codigo2[4];
 char cidade2[20];
-int populacao2;
+unsigned long int populacao2; // Atualizado para unsigned long int conforme nível mestre
 float area2;
 float pib2;
 int nturisticos2;
@@ -27,6 +27,9 @@ float densidade1;
 float densidade2;
 float pibcapita1;
 float pibcapita2;
+
+float superPoder1; // Adicionado nível mestre
+float superPoder2; // Adicionado nível mestre
 
   // Área para entrada de dados
 
@@ -41,7 +44,7 @@ printf("Digite o nome da cidade: \n");
 scanf(" %[^\n]", cidade1); 
 
 printf("Digite a população: \n");
-scanf("%d", &populacao1);
+scanf("%lu", &populacao1); // Atualizado para %lu
 
 getchar();
 
@@ -67,7 +70,7 @@ printf("Digite o nome da cidade: \n");
 scanf(" %[^\n]", cidade2); 
 
 printf("Digite a população: \n");
-scanf("%d", &populacao2);
+scanf("%lu", &populacao2); // Atualizado para %lu
 
 getchar();
 
@@ -84,18 +87,22 @@ scanf("%d", &nturisticos2);
 
   // Área para cálculos
 
-  densidade1 = populacao1 / area1;
-  densidade2 = populacao2 / area2;
+  densidade1 = (float)populacao1 / area1;
+  densidade2 = (float)populacao2 / area2;
 
-  pibcapita1 = pib1 / populacao1;
-  pibcapita2 = pib2 / populacao2;
+  pibcapita1 = pib1 / (float)populacao1;
+  pibcapita2 = pib2 / (float)populacao2;
+
+  // Cálculo Super Poder - Nível Mestre
+  superPoder1 = (float)populacao1 + area1 + pib1 + (float)nturisticos1 + pibcapita1 + (1.0f / densidade1);
+  superPoder2 = (float)populacao2 + area2 + pib2 + (float)nturisticos2 + pibcapita2 + (1.0f / densidade2);
 
   // Área para exibição dos dados da cidade
 printf("\nCarta 1: \n\n");
 printf("Estado: %c \n", estado1);
 printf("Código: %s \n", codigo1);
 printf("Cidade: %s \n", cidade1);
-printf("População: %d\n", populacao1);
+printf("População: %lu\n", populacao1);
 printf("Área: %.2f km²\n", area1);
 printf("PIB: %.2f\n", pib1);
 printf("Pontos turísticos: %d\n", nturisticos1);
@@ -106,13 +113,22 @@ printf("\nCarta 2: \n\n");
 printf("Estado: %c \n", estado2);
 printf("Código: %s \n", codigo2);
 printf("Cidade: %s \n", cidade2);
-printf("População: %d\n", populacao2);
+printf("População: %lu\n", populacao2);
 printf("Área: %.2f km²\n", area2);
 printf("PIB: %.2f\n", pib2);
 printf("Pontos turísticos: %d\n", nturisticos2);
-printf("Densidade populacional: %.2f\n", densidade2);
+printf("Densidade populacional: %.2f\n", densidade1);
 printf("PIB per capita: %.2f\n", pibcapita2);
+
+// Área de Comparação - Nível Mestre
+printf("\nComparação de Cartas:\n");
+printf("População: Carta 1 venceu (%d)\n", populacao1 > populacao2);
+printf("Área: Carta 1 venceu (%d)\n", area1 > area2);
+printf("PIB: Carta 1 venceu (%d)\n", pib1 > pib2);
+printf("Pontos Turísticos: Carta 1 venceu (%d)\n", nturisticos1 > nturisticos2);
+printf("Densidade Populacional: Carta 1 venceu (%d)\n", densidade1 < densidade2);
+printf("PIB per Capita: Carta 1 venceu (%d)\n", pibcapita1 > pibcapita2);
+printf("Super Poder: Carta 1 venceu (%d)\n", superPoder1 > superPoder2);
+
 return 0;
-
-
 }
