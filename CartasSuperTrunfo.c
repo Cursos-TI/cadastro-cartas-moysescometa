@@ -121,14 +121,126 @@ printf("Densidade populacional: %.2f\n", densidade1);
 printf("PIB per capita: %.2f\n", pibcapita2);
 
 // Área de Comparação - Nível Mestre
-printf("\nComparação de Cartas:\n");
-printf("População: Carta 1 venceu (%d)\n", populacao1 > populacao2);
-printf("Área: Carta 1 venceu (%d)\n", area1 > area2);
-printf("PIB: Carta 1 venceu (%d)\n", pib1 > pib2);
-printf("Pontos Turísticos: Carta 1 venceu (%d)\n", nturisticos1 > nturisticos2);
-printf("Densidade Populacional: Carta 1 venceu (%d)\n", densidade1 < densidade2);
-printf("PIB per Capita: Carta 1 venceu (%d)\n", pibcapita1 > pibcapita2);
-printf("Super Poder: Carta 1 venceu (%d)\n", superPoder1 > superPoder2);
+// printf("\nComparação de Cartas:\n");
+// printf("População: Carta 1 venceu (%d)\n", populacao1 > populacao2);
+// printf("Área: Carta 1 venceu (%d)\n", area1 > area2);
+// printf("PIB: Carta 1 venceu (%d)\n", pib1 > pib2);
+// printf("Pontos Turísticos: Carta 1 venceu (%d)\n", nturisticos1 > nturisticos2);
+// printf("Densidade Populacional: Carta 1 venceu (%d)\n", densidade1 < densidade2);
+// printf("PIB per Capita: Carta 1 venceu (%d)\n", pibcapita1 > pibcapita2);
+// printf("Super Poder: Carta 1 venceu (%d)\n", superPoder1 > superPoder2);
+
+// Menu interativo - Nível Aventureiro
+
+int opcao;
+
+printf("\n=====================================\n");
+printf("              MENU                  \n");
+printf("=====================================\n");
+
+printf("Escolha um atributo para comparar:\n");
+printf("1 - Populacao\n");
+printf("2 - Area\n");
+printf("3 - PIB\n");
+printf("4 - Pontos Turisticos\n");
+printf("5 - Densidade Populacional\n");
+
+printf("\nDigite a opcao: ");
+scanf("%d", &opcao);
+
+switch(opcao) {
+
+    case 1:
+
+        printf("\nComparacao de Populacao\n");
+
+        if(populacao1 > populacao2) {
+            printf("Vencedor: %s\n", cidade1);
+
+        } else if(populacao2 > populacao1) {
+            printf("Vencedor: %s\n", cidade2);
+
+        } else {
+            printf("Empate!\n");
+        }
+
+        break;
+
+    case 2:
+
+        printf("\nComparacao de Area\n");
+
+        if(area1 > area2) {
+            printf("Vencedor: %s\n", cidade1);
+
+        } else if(area2 > area1) {
+            printf("Vencedor: %s\n", cidade2);
+
+        } else {
+            printf("Empate!\n");
+        }
+
+        break;
+
+    case 3:
+
+        printf("\nComparacao de PIB\n");
+
+        if(pib1 > pib2) {
+            printf("Vencedor: %s\n", cidade1);
+
+        } else if(pib2 > pib1) {
+            printf("Vencedor: %s\n", cidade2);
+
+        } else {
+            printf("Empate!\n");
+        }
+
+        break;
+
+    case 4:
+
+        printf("\nComparacao de Pontos Turisticos\n");
+
+        if(nturisticos1 > nturisticos2) {
+            printf("Vencedor: %s\n", cidade1);
+
+        } else if(nturisticos2 > nturisticos1) {
+            printf("Vencedor: %s\n", cidade2);
+
+        } else {
+            printf("Empate!\n");
+        }
+
+        break;
+
+    case 5:
+
+        printf("\nComparacao de Densidade Populacional\n");
+
+        // Regra invertida
+        if(densidade1 < densidade2) {
+
+            // if aninhado
+            if(densidade1 > 0) {
+                printf("Vencedor: %s\n", cidade1);
+            }
+
+        } else if(densidade2 < densidade1) {
+
+            if(densidade2 > 0) {
+                printf("Vencedor: %s\n", cidade2);
+            }
+
+        } else {
+            printf("Empate!\n");
+        }
+
+        break;
+
+    default:
+        printf("Opcao invalida!\n");
+}
 
 return 0;
 }
